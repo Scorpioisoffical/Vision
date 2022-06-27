@@ -1,0 +1,6 @@
+func main():
+    write("hello world")
+
+main()
+
+/@ can be written diffrently
