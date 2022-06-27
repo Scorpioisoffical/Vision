@@ -1,4 +1,4 @@
 import Vision 
 
 while True:
-    code = input("Vision $")
+    code = input("Vision $ ")
