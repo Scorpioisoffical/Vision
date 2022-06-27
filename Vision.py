@@ -13,7 +13,20 @@ TT_LPAREN = "LPAREN"
 TT_RPAREN = "RPAREN"
 DIG = [0,1,2,3,4,5,6,7,8,9]
 
-# defining the token class
+class Error:
+    def __init__(self,error_name,details):
+        self.error_name = error_name
+        self.details = details
+
+    def as_string(self):
+        result = f"{self.error_name}:{self.details}"
+        return result
+
+class illegal_Char_Error(Error):
+    def __init__(self,details):
+        super().__init__("Illegal Character",details)
+
+# Defining the Token Class
 class Token:
     def __init__(self, type_, value):
         self.type = type_
@@ -23,9 +36,7 @@ class Token:
         if self.value: return f'{self.type}:{self.value}'
         return f'{self.type}'
 
-
 # Lexer
-
 class lexer:
     def __init__(self, text):
         self.text = text
@@ -33,16 +44,15 @@ class lexer:
         self.curr_char = None
         self.advance()
     
-    # to go to the next token/letter in somesort of code
+    # To go to the next token/letter in somesort of code
     def advance(self):
         self.pos += 1
         if(self.pos < len(self.text)):
             self.curr_char = self.text[self.pos] 
         else:
             return None
-            # self.curr_char = self.text[self.pos] if self.pos < len(self.text) else None 
     
-    # makes all the tokens and returns them to an list
+    # Makes all the tokens and returns them to an list
     def make_tokens(self):
         tokens = []
 
@@ -72,8 +82,13 @@ class lexer:
             elif self.curr_char == ")":
                 tokens.append(Token(TT_RPAREN))
                 self.advance()
+
+            else:
+                char = self.current_char
+                self.advance()
+                return [],illegal_Char_Error("'" + char + "'")
             
-        return tokens
+        return tokens,None
 
 def make_digits(self):
     num_str = "" #Keeping track of numbers in string form
@@ -85,9 +100,12 @@ def make_digits(self):
                 break
             dot_count += 1
             num_str += "."
-            else:
-                num_str += self.current_char
+        else:
+            num_str += self.current_char
 
-        if dot_count == 0:
+    if dot_count == 0:
+        return Token(TT_INT,int(num_str))
+    else:
+        return Token(TT_FLOAT,float(num_str))
 
 
