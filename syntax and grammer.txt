@@ -2,8 +2,8 @@ syntax:
 var = var (javascript syntax)
 const = const (javascript syntax)
 func/fun = function (kotlin "fun" can be used instead of func)
-write = print (should we change this?)
-/@ = comment (new comment design)
+write = print 
+@ = comment (new comment design)
 foreach = for (c# syntax here)
 end = end (basic syntax needed here)
 run = run (runs a file or some code in or out the terminal)

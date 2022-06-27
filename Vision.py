@@ -85,5 +85,9 @@ def make_digits(self):
                 break
             dot_count += 1
             num_str += "."
-        else:
-            num_str += self.current_char
+            else:
+                num_str += self.current_char
+
+        if dot_count == 0:
+
+
