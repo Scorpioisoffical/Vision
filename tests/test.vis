@@ -3,4 +3,14 @@ func main():
 
 main()
 
-/@ can be written diffrently
+@ can be written diffrently
+
+#Print Statement (Python Based)
+fun main(){
+    print("Hello World") 
+}
+
+#Println Statement (C Based)
+fun main(){
+    println("Hello World")
+}
