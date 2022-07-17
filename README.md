@@ -16,7 +16,12 @@ fun main() {
     writeln(name,pi)
  }
 ```
-
+```
+fun main() {
+    let num:adder - inf
+    conval age:adder twenty-four
+}
+```
 
 ## Authors
 
